@@ -1,0 +1,14 @@
+{
+  "name": "bookmark-manager",
+  "version": "1.0.0",
+  "description": "bookmarks-manager\r A Portal to allow users to save, organize, import and export bookmarks. Users must be able to store their bookmarks privately or share it publicly.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Sahaja Phuyal, Ganesh Acharya, Bisistha, Pranav Shrestha, Ujjal Khadka",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
