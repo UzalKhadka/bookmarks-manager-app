@@ -4,42 +4,46 @@ const data = [
     username: 'admin',
     name: 'Admin User',
     password: '12345',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },
@@ -48,42 +52,46 @@ const data = [
     username: 'babu.ram',
     name: 'Babu Ram',
     password: '22222',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },
@@ -92,42 +100,46 @@ const data = [
     username: 'shankar.dev',
     name: 'Shankar Dev',
     password: '33333',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },
@@ -136,42 +148,46 @@ const data = [
     username: 'rohit.shetty',
     name: 'Rohit Shetty',
     password: '44444',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },
@@ -180,42 +196,46 @@ const data = [
     username: 'kamal.hasan',
     name: 'Kamal Hasan',
     password: '55555',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },
@@ -224,42 +244,46 @@ const data = [
     username: 'ganesh.gurung',
     name: 'Ganesh Gurung',
     password: '66666',
-    bookmarks: [
+    categories: [
       {
-        _id: '1',
-        name: 'Youtube',
-        link: 'www.youtube.com',
-        category: 'misc',
+        name: 'misc',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Youtube',
+            link: 'www.youtube.com',
+          },
+          {
+            _id: '2',
+            name: 'Instagram',
+            link: 'www.instagram.com',
+          },
+          {
+            _id: '3',
+            name: 'Facebook',
+            link: 'www.facebook.com',
+          },
+        ],
       },
       {
-        _id: '2',
-        name: 'Instagram',
-        link: 'www.instagram.com',
-        category: 'misc',
-      },
-      {
-        _id: '3',
-        name: 'Facebook',
-        link: 'www.facebook.com',
-        category: 'misc',
-      },
-      {
-        _id: '4',
-        name: 'Github',
-        link: 'www.github.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '5',
-        name: 'Basecamp',
-        link: 'www.basecamp.com',
-        category: 'Padhai',
-      },
-      {
-        _id: '6',
-        name: 'Stack Overflow',
-        link: 'www.stackoverflow.com',
-        category: 'Padhai',
+        name: 'padhai',
+        bookmarks: [
+          {
+            _id: '1',
+            name: 'Github',
+            link: 'www.github.com',
+          },
+          {
+            _id: '2',
+            name: 'Basecamp',
+            link: 'www.basecamp.com',
+          },
+          {
+            _id: '3',
+            name: 'Stack Overflow',
+            link: 'www.stackoverflow.com',
+          },
+        ],
       },
     ],
   },

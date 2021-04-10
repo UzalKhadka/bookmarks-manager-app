@@ -7,27 +7,65 @@ app.get('/', (req, res) => {
   res.send('Backend API is running...')
 })
 
+//GET  request
+//returns all the users
 app.get('/api/users/', (req, res) => {
   res.json(data)
 })
 
+//GET  request
+//returns a user based on the username
 app.get('/api/users/:user', (req, res) => {
   const user = data.find((p) => p.username === req.params.user)
   res.json(user)
 })
 
-app.get('/api/users/:user/bookmarks/', (req, res) => {
+//GET  request
+//returns all the categories of a certain user
+app.get('/api/users/:user/categories/', (req, res) => {
   const user = data.find((p) => p.username === req.params.user)
-  bookmarks = user.bookmarks
+  categories = user.categories
+  res.json(categories)
+})
+
+//GET  request
+//returns a category based on the category name
+app.get('/api/users/:user/categories/:category', (req, res) => {
+  const user = data.find((p) => p.username === req.params.user)
+  categories = user.categories
+
+  const category = categories.find((p) => p.name === req.params.category)
+  res.json(category)
+})
+
+//GET  request
+//returns all the bookmarks of a certain category
+app.get('/api/users/:user/categories/:category/bookmarks/', (req, res) => {
+  const user = data.find((p) => p.username === req.params.user)
+  categories = user.categories
+
+  const category = categories.find((p) => p.name === req.params.category)
+
+  bookmarks = category.bookmarks
+
   res.json(bookmarks)
 })
 
-app.get('/api/users/:user/bookmarks/:id', (req, res) => {
-  const user = data.find((p) => p.username === req.params.user)
-  bookmarks = user.bookmarks
+//GET  request
+//returns a bookmark based on the bookmark id
+app.get(
+  '/api/users/:user/categories/:category/bookmarks/:bookmark',
+  (req, res) => {
+    const user = data.find((p) => p.username === req.params.user)
+    categories = user.categories
 
-  const bookmark = bookmarks.find((p) => p._id === req.params.id)
-  res.json(bookmark)
-})
+    const category = categories.find((p) => p.name === req.params.category)
+
+    const bookmarks = category.bookmarks
+    const bookmark = bookmarks.find((p) => p._id === req.params.bookmark)
+
+    res.json(bookmark)
+  }
+)
 
 app.listen(5000, console.log('Server running on port 5000'))
