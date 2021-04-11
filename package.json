@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "description": "bookmarks-manager\r A Portal to allow users to save, organize, import and export bookmarks. Users must be able to store their bookmarks privately or share it publicly.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node backend/server"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Sahaja Phuyal, Ganesh Acharya, Bisistha, Pranav Shrestha, Ujjal Khadka",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.1",
+    "nodemon": "^2.0.7"
   }
 }

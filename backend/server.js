@@ -1,5 +1,9 @@
-const express = require('express')
-const data = require('./data/data')
+import express from 'express'
+import dotenv from 'dotenv'
+
+import data from './data/data.js'
+
+dotenv.config()
 
 const app = express()
 
@@ -24,7 +28,7 @@ app.get('/api/users/:user', (req, res) => {
 //returns all the categories of a certain user
 app.get('/api/users/:user/categories/', (req, res) => {
   const user = data.find((p) => p.username === req.params.user)
-  categories = user.categories
+  const categories = user.categories
   res.json(categories)
 })
 
@@ -32,7 +36,7 @@ app.get('/api/users/:user/categories/', (req, res) => {
 //returns a category based on the category name
 app.get('/api/users/:user/categories/:category', (req, res) => {
   const user = data.find((p) => p.username === req.params.user)
-  categories = user.categories
+  const categories = user.categories
 
   const category = categories.find((p) => p.name === req.params.category)
   res.json(category)
@@ -42,7 +46,7 @@ app.get('/api/users/:user/categories/:category', (req, res) => {
 //returns all the bookmarks of a certain category
 app.get('/api/users/:user/categories/:category/bookmarks/', (req, res) => {
   const user = data.find((p) => p.username === req.params.user)
-  categories = user.categories
+  const categories = user.categories
 
   const category = categories.find((p) => p.name === req.params.category)
 
@@ -57,7 +61,7 @@ app.get(
   '/api/users/:user/categories/:category/bookmarks/:bookmark',
   (req, res) => {
     const user = data.find((p) => p.username === req.params.user)
-    categories = user.categories
+    const categories = user.categories
 
     const category = categories.find((p) => p.name === req.params.category)
 
@@ -68,4 +72,6 @@ app.get(
   }
 )
 
-app.listen(5000, console.log('Server running on port 5000'))
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, console.log(`Server running on port ${PORT}`))

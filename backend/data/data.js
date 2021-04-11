@@ -6,6 +6,7 @@ const data = [
     password: '12345',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -26,6 +27,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -54,6 +56,7 @@ const data = [
     password: '22222',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -74,6 +77,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -102,6 +106,7 @@ const data = [
     password: '33333',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -122,6 +127,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -150,6 +156,7 @@ const data = [
     password: '44444',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -170,6 +177,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -198,6 +206,7 @@ const data = [
     password: '55555',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -218,6 +227,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -246,6 +256,7 @@ const data = [
     password: '66666',
     categories: [
       {
+        _id: '1',
         name: 'misc',
         bookmarks: [
           {
@@ -266,6 +277,7 @@ const data = [
         ],
       },
       {
+        _id: '2',
         name: 'padhai',
         bookmarks: [
           {
@@ -289,4 +301,4 @@ const data = [
   },
 ]
 
-module.exports = data
+export default data
