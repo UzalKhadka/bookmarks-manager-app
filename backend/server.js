@@ -1,9 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
 
+import connectDB from './congig/db.js'
 import data from './data/data.js'
 
 dotenv.config()
+
+connectDB()
 
 const app = express()
 
