@@ -1,5 +1,5 @@
 import express from 'express'
-import AsyncHandler from 'express-async-handler'
+import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 
 const router = express.Router()
@@ -10,22 +10,101 @@ const router = express.Router()
 //returns all the users
 router.get(
   '/',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const users = await User.find({})
 
     res.json(users)
   })
 )
 
-//GET  request
+//POST request || Create request
+//adds a new user
+router.post(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { name, username, password } = req.body
+
+    const userExists = await User.findOne({ username })
+
+    if (userExists) {
+      res.status(400).json({ message: 'User already exists' })
+    }
+
+    const user = await User.create({
+      name,
+      username,
+      password,
+      categories: [{ name: 'misc', bookmarks: [] }],
+    })
+
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        username: user.username,
+        password: user.password,
+      })
+    } else {
+      res.status(400).json({ message: 'Invalid user data' })
+    }
+  })
+)
+
+//GET  request || Read request
 //returns a user based on the username
 router.get(
   '/:user',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
 
     if (user) {
       res.json(user)
+    } else {
+      res.status(404).json({ message: 'User not found' })
+    }
+  })
+)
+
+// PUT request || Update request
+// updates an existing user
+router.put(
+  '/:user',
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.user)
+
+    if (user) {
+      user.name = req.body.name || user.name
+      user.username = req.body.username || user.username
+      if (req.body.password) {
+        user.password = req.body.password
+      }
+
+      const updatedUser = await user.save()
+
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        username: updatedUser.username,
+        password: updatedUser.password,
+      })
+    } else {
+      res.status(404).json({ message: 'User not found' })
+    }
+  })
+)
+
+// DELETE request || Delete request
+// deletes a certain user
+router.delete(
+  '/:user',
+  asyncHandler(async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.user)
+    if (user) {
+      res.json({
+        _id: user._id,
+        username: user.username,
+        message: 'User deleted',
+      })
     } else {
       res.status(404).json({ message: 'User not found' })
     }
@@ -38,7 +117,7 @@ router.get(
 //returns all the categories of a certain user
 router.get(
   '/:user/categories',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
     const categories = await user.categories
 
@@ -54,7 +133,7 @@ router.get(
 //returns a category based on the category name
 router.get(
   '/:user/categories/:category',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
     const categories = await user.categories
     const category = categories.find((p) => p.name === req.params.category)
@@ -73,7 +152,7 @@ router.get(
 //returns all the bookmarks of a certain category
 router.get(
   '/:user/categories/:category/bookmarks',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
     const categories = await user.categories
     const category = categories.find((p) => p.name === req.params.category)
@@ -91,7 +170,7 @@ router.get(
 //returns a bookmark based on the bookmark id
 router.get(
   '/:user/categories/:category/bookmarks/:bookmark',
-  AsyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.user })
     const categories = await user.categories
     const category = categories.find((p) => p.name === req.params.category)
