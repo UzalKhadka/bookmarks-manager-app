@@ -13,7 +13,12 @@ router.get(
   asyncHandler(async (req, res) => {
     const users = await User.find({})
 
-    res.json(users)
+    if (users) {
+      res.status(200).json(users)
+    } else {
+      res.status(404)
+      throw new Error('Users not found')
+    }
   })
 )
 
@@ -45,7 +50,8 @@ router.post(
         password: user.password,
       })
     } else {
-      res.status(400).json({ message: 'Invalid user data' })
+      res.status(400)
+      throw new Error('Invalid user data')
     }
   })
 )
@@ -53,24 +59,40 @@ router.post(
 //GET  request || Read request
 //returns a user based on the username
 router.get(
-  '/:user',
+  '/:username',
   asyncHandler(async (req, res) => {
-    const user = await User.findOne({ username: req.params.user })
+    const user = await User.findOne({ username: req.params.username })
 
     if (user) {
-      res.json(user)
+      res.status(200).json(user)
     } else {
-      res.status(404).json({ message: 'User not found' })
+      res.status(404)
+      throw new Error('User not found')
     }
   })
 )
 
+//get based on the userID
+// router.get(
+//   '/:userID',
+//   asyncHandler(async (req, res) => {
+//     const user = await User.findOneById(req.params.userID)
+
+//     if (user) {
+//       res.status(200).json(user)
+//     } else {
+//       res.status(404)
+//       throw new Error('User not found')
+//     }
+//   })
+// )
+
 // PUT request || Update request
 // updates an existing user
 router.put(
-  '/:user',
+  '/:userID',
   asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.user)
+    const user = await User.findById(req.params.userID)
 
     if (user) {
       user.name = req.body.name || user.name
@@ -81,14 +103,15 @@ router.put(
 
       const updatedUser = await user.save()
 
-      res.json({
+      res.status(200).json({
         _id: updatedUser._id,
         name: updatedUser.name,
         username: updatedUser.username,
         password: updatedUser.password,
       })
     } else {
-      res.status(404).json({ message: 'User not found' })
+      res.status(404)
+      throw new Error('User not found')
     }
   })
 )
@@ -96,17 +119,19 @@ router.put(
 // DELETE request || Delete request
 // deletes a certain user
 router.delete(
-  '/:user',
+  '/:userID',
   asyncHandler(async (req, res) => {
-    const user = await User.findByIdAndDelete(req.params.user)
+    const user = await User.findByIdAndDelete(req.params.userID)
+
     if (user) {
-      res.json({
+      res.status(200).json({
         _id: user._id,
         username: user.username,
         message: 'User deleted',
       })
     } else {
-      res.status(404).json({ message: 'User not found' })
+      res.status(404)
+      throw new Error('User not found')
     }
   })
 )
@@ -116,15 +141,16 @@ router.delete(
 //GET  request
 //returns all the categories of a certain user
 router.get(
-  '/:user/categories',
+  '/:userID/categories',
   asyncHandler(async (req, res) => {
-    const user = await User.findOne({ username: req.params.user })
+    const user = await User.findOnebyID(req.params.userID)
     const categories = await user.categories
 
     if (categories) {
-      res.json(categories)
+      res.status(200).json(categories)
     } else {
-      res.status(404).json({ message: 'Categories not found' })
+      res.status(404)
+      throw new Error('Categories not found')
     }
   })
 )
@@ -132,16 +158,17 @@ router.get(
 //GET  request
 //returns a category based on the category name
 router.get(
-  '/:user/categories/:category',
+  '/:userID/categories/:categoryID',
   asyncHandler(async (req, res) => {
-    const user = await User.findOne({ username: req.params.user })
+    const user = await User.findOnebyID(req.params.userID)
     const categories = await user.categories
-    const category = categories.find((p) => p.name === req.params.category)
+    const category = categories.find((p) => p._id === req.params.categoryID)
 
     if (category) {
-      res.json(category)
+      res.status(200).json(category)
     } else {
-      res.status(404).json({ message: 'Category not found' })
+      res.status(404)
+      throw new Error('Category not found')
     }
   })
 )
@@ -151,17 +178,18 @@ router.get(
 //GET  request
 //returns all the bookmarks of a certain category
 router.get(
-  '/:user/categories/:category/bookmarks',
+  '/:userID/categories/:categoryID/bookmarks',
   asyncHandler(async (req, res) => {
-    const user = await User.findOne({ username: req.params.user })
+    const user = await User.findOnebyID(req.params.userID)
     const categories = await user.categories
-    const category = categories.find((p) => p.name === req.params.category)
+    const category = categories.find((p) => p._id === req.params.categoryID)
     const bookmarks = category.bookmarks
 
     if (bookmarks) {
-      res.json(bookmarks)
+      res.status(200).json(bookmarks)
     } else {
-      res.status(404).json({ message: 'Bookmarks not found' })
+      res.status(404)
+      throw new Error('Bookmarks not found')
     }
   })
 )
@@ -169,18 +197,19 @@ router.get(
 //GET  request
 //returns a bookmark based on the bookmark id
 router.get(
-  '/:user/categories/:category/bookmarks/:bookmark',
+  '/:userID/categories/:categoryID/bookmarks/:bookmarkID',
   asyncHandler(async (req, res) => {
-    const user = await User.findOne({ username: req.params.user })
+    const user = await User.findOnebyID(req.params.userID)
     const categories = await user.categories
-    const category = categories.find((p) => p.name === req.params.category)
+    const category = categories.find((p) => p._id === req.params.categoryID)
     const bookmarks = category.bookmarks
-    const bookmark = bookmarks.find((p) => p._id == req.params.bookmark)
+    const bookmark = bookmarks.find((p) => p._id == req.params.bookmarkID)
 
     if (bookmark) {
-      res.json(bookmark)
+      res.status(200).json(bookmark)
     } else {
-      res.status(404).json({ message: 'Bookmark not found' })
+      res.status(404)
+      throw new Error('Bookmark not found')
     }
   })
 )
