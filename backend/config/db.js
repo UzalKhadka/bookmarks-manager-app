@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect('mongodb+srv://pranabs:1234@bookmarksmanager.krvxx.mongodb.net/bookmarks-manager?retryWrites=true&w=majority', {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
