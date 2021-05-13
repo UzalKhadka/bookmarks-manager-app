@@ -6,6 +6,7 @@ const users = [
     categories: [
       {
         name: 'misc',
+        isPrivate: false,
         bookmarks: [
           {
             name: 'Youtube',
@@ -23,6 +24,7 @@ const users = [
       },
       {
         name: 'padhai',
+        isPrivate: true,
         bookmarks: [
           {
             name: 'Github',
@@ -47,6 +49,7 @@ const users = [
     categories: [
       {
         name: 'misc',
+        isPrivate: false,
         bookmarks: [
           {
             name: 'Youtube',
@@ -64,6 +67,7 @@ const users = [
       },
       {
         name: 'padhai',
+        isPrivate: true,
         bookmarks: [
           {
             name: 'Github',
@@ -88,6 +92,7 @@ const users = [
     categories: [
       {
         name: 'misc',
+        isPrivate: false,
         bookmarks: [
           {
             name: 'Youtube',
@@ -105,6 +110,7 @@ const users = [
       },
       {
         name: 'padhai',
+        isPrivate: true,
         bookmarks: [
           {
             name: 'Github',

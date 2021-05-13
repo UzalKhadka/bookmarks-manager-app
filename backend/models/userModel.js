@@ -24,6 +24,10 @@ const categorySchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    isPrivate: {
+      type: Boolean,
+      default: false,
+    },
     bookmarks: [bookmarkSchema],
   },
   {
