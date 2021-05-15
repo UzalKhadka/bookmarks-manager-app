@@ -2,9 +2,9 @@ bookmarks-manager
 A Portal to allow users to save, organize, import and export bookmarks where users must be able to store their bookmarks privately or share it publicly.
 
 For Frontend
-To open the app:
-For a working prototype of the frontend design:
-Open design/index.html
+To launch the Frontend server,
+go to the frontend directory,
+run npm start
 
 After the completion of frontend design, a new folder named 'frontend' shal be created and all the frontend works will be done as a Reach app.
 

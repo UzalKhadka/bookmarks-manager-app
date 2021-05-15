@@ -1,0 +1,16 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend part of the Web Application",
+  "main": "index.js",
+  "scripts": {
+    "frontend-server": "live-server src --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ganesh Acharya, Pranab Shrestha, Ujjal Khadka",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
