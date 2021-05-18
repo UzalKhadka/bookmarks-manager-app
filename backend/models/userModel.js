@@ -58,6 +58,10 @@ const userSchema = mongoose.Schema(
   }
 )
 
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return (await enteredPassword) == this.password
+}
+
 const User = mongoose.model('user', userSchema)
 
 export default User

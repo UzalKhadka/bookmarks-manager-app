@@ -1,8 +1,11 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
+import { authUser } from '../controllers/userController.js'
 import User from '../models/userModel.js'
 
 const router = express.Router()
+
+router.post('/login', authUser)
 
 //CRUD for user
 
@@ -62,8 +65,16 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.username })
 
+    // const { categories } = user
+
     if (user) {
+      // if (categories) {
       res.status(200).json(user)
+      // res.status(200).json(categories)
+      // } else {
+      // res.status(404)
+      // throw new Error('Category not found')
+      // }
     } else {
       res.status(404)
       throw new Error('User not found')
