@@ -1,10 +1,8 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
   createBookmark,
-  getBookmarkDetails,
   getCategoriesList,
   getCategoryDetails,
 } from '../actions/userActions'
@@ -19,7 +17,7 @@ const AddBookmarkToCategoryScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   const CategoriesList = useSelector((state) => state.categoryList)
-  const { loading, error, categories } = CategoriesList
+  const { categories } = CategoriesList
 
   const category = categories.find(
     (category) => category._id === match.params.categoryID
@@ -38,7 +36,6 @@ const AddBookmarkToCategoryScreen = ({ history, match }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    // console.log(name, link, categoryID)
 
     if (userInfo._id && match.params.categoryID && name && link) {
       dispatch(
@@ -63,13 +60,13 @@ const AddBookmarkToCategoryScreen = ({ history, match }) => {
 
   return (
     // <!-- add a bookmark section -->
-    <section class='add-section'>
-      <div class='add-container'>
-        <div class='add-content'>
-          <div class='add-bookmark-section'>
-            <p class='title'>{`Add a Bookmark to ${categoryName}`}</p>
-            <form id='add-bookmarks-form' class='add-bookmark-form'>
-              <div class='form-field'>
+    <section className='add-section'>
+      <div className='add-container'>
+        <div className='add-content'>
+          <div className='add-bookmark-section'>
+            <p className='title'>{`Add a Bookmark to ${categoryName}`}</p>
+            <form id='add-bookmarks-form' className='add-bookmark-form'>
+              <div className='form-field'>
                 <label for='add-bookmark-name'>Name</label>
                 <input
                   id='add-bookmark-name'
@@ -78,7 +75,7 @@ const AddBookmarkToCategoryScreen = ({ history, match }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='add-bookmark-link'>Link</label>
                 <input
                   id='add-bookmark-link'
@@ -88,19 +85,19 @@ const AddBookmarkToCategoryScreen = ({ history, match }) => {
                 />
               </div>
 
-              <div class='form-field save-cancel'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Save</div>
-                </a>
+              <div className='form-field save-cancel'>
+                <Link to='/' onClick={submitHandler}>
+                  <div className='button'>Save</div>
+                </Link>
 
-                <a href='#' onClick={resetHandler}>
-                  <div class='button'>Cancel</div>
-                </a>
+                <Link to='/' onClick={resetHandler}>
+                  <div className='button'>Cancel</div>
+                </Link>
               </div>
 
-              <div class='form-field'>
+              <div className='form-field'>
                 <Link to={`/categories/${match.params.categoryID}`}>
-                  <div class='button last'>Go Back</div>
+                  <div className='button last'>Go Back</div>
                 </Link>
               </div>
             </form>

@@ -27,6 +27,9 @@ import {
   CATEGORY_UPDATE_FAIL,
   CATEGORY_UPDATE_REQUEST,
   CATEGORY_UPDATE_SUCCESS,
+  CATEGORY_WITH_BOOKMARKS_CREATE_FAIL,
+  CATEGORY_WITH_BOOKMARKS_CREATE_REQUEST,
+  CATEGORY_WITH_BOOKMARKS_CREATE_SUCCESS,
   USER_CATEGORY_LIST_FAIL,
   USER_CATEGORY_LIST_REQUEST,
   USER_CATEGORY_LIST_SUCCESS,
@@ -127,8 +130,6 @@ export const getUserCategoriesList = (username) => async (dispatch) => {
 
     const { data } = await axios.get(`/api/users/${username}`)
 
-    console.log(data)
-
     var categories = []
 
     for (let i in data.categories) {
@@ -141,8 +142,6 @@ export const getUserCategoriesList = (username) => async (dispatch) => {
       name: data.name,
       categories: categories,
     }
-
-    console.log(user)
 
     dispatch({
       type: USER_CATEGORY_LIST_SUCCESS,
@@ -238,8 +237,6 @@ export const createCategory = (userID, name, isPrivate) => async (dispatch) => {
       type: CATEGORY_CREATE_REQUEST,
     })
 
-    console.log(userID)
-
     const config = {
       Headers: {
         'Content-Type': 'application/json',
@@ -266,6 +263,40 @@ export const createCategory = (userID, name, isPrivate) => async (dispatch) => {
     })
   }
 }
+
+export const createCategoryWithBookmarks =
+  (userID, name, isPrivate, file) => async (dispatch) => {
+    try {
+      dispatch({
+        type: CATEGORY_WITH_BOOKMARKS_CREATE_REQUEST,
+      })
+
+      const config = {
+        Headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      const { data } = await axios.put(
+        `/api/users/${userID}/categories-with-bookmarks`,
+        { name, isPrivate, file },
+        config
+      )
+
+      dispatch({
+        type: CATEGORY_WITH_BOOKMARKS_CREATE_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: CATEGORY_WITH_BOOKMARKS_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
 
 export const createBookmark =
   (userID, categoryID, name, link) => async (dispatch) => {
@@ -307,8 +338,6 @@ export const deleteBookmark =
       dispatch({
         type: BOOKMARK_DELETE_REQUEST,
       })
-
-      // console.log(userID)
 
       const config = {
         Headers: {

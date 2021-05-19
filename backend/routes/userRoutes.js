@@ -65,37 +65,14 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = await User.findOne({ username: req.params.username })
 
-    // const { categories } = user
-
     if (user) {
-      // if (categories) {
       res.status(200).json(user)
-      // res.status(200).json(categories)
-      // } else {
-      // res.status(404)
-      // throw new Error('Category not found')
-      // }
     } else {
       res.status(404)
       throw new Error('User not found')
     }
   })
 )
-
-//get based on the userID
-// router.get(
-//   '/:userID',
-//   asyncHandler(async (req, res) => {
-//     const user = await User.findOneById(req.params.userID)
-
-//     if (user) {
-//       res.status(200).json(user)
-//     } else {
-//       res.status(404)
-//       throw new Error('User not found')
-//     }
-//   })
-// )
 
 // PUT request || Update request
 // updates an existing user
@@ -194,6 +171,47 @@ router.put(
     } else {
       res.status(404)
       throw new Error('User not found')
+    }
+  })
+)
+
+// POST request || Create request
+// it is actually PUT requst, since we are creating a new category in the already available user
+// creates a new category of a certain user
+router.put(
+  '/:userID/categories-with-bookmarks',
+  asyncHandler(async (req, res) => {
+    if (req.files !== null) {
+      const user = await User.findById(req.params.userID)
+
+      var bookmarkFile = req.files.file
+      var bookmarkList = []
+
+      if (user) {
+        user.categories.push({
+          name: req.body.name,
+          isPrivate: req.body.isPrivate,
+          bookmarks: bookmarkList,
+        })
+
+        const updatedUser = await user.save()
+
+        const newCategory =
+          updatedUser.categories[updatedUser.categories.length - 1]
+
+        res.status(200).json({
+          _id: newCategory._id,
+          name: newCategory.name,
+          isPrivate: newCategory.isPrivate,
+          bookmarks: newCategory.bookmarks,
+        })
+      } else {
+        res.status(404)
+        throw new Error('User not found')
+      }
+    } else {
+      res.status(404)
+      throw new Error('File not uploaded')
     }
   })
 )

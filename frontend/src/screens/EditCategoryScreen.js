@@ -13,8 +13,7 @@ const EditCategoryScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   const Category = useSelector((state) => state.categoryDetails)
-  const { loading, error, category } = Category
-
+  const { category } = Category
   const categoryName = category ? category.name : 'a Category'
 
   useEffect(() => {
@@ -24,6 +23,7 @@ const EditCategoryScreen = ({ history, match }) => {
       category ? setIsPrivate(category.isPrivate) : null
     )
   }, [
+    category,
     category.isPrivate,
     category.name,
     dispatch,
@@ -37,7 +37,6 @@ const EditCategoryScreen = ({ history, match }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log(name, isPrivate)
 
     dispatch(
       updateCategory(userInfo._id, match.params.categoryID, name, isPrivate)
@@ -55,17 +54,16 @@ const EditCategoryScreen = ({ history, match }) => {
   const resetForm = () => {
     setName(category.name)
     setIsPrivate(category.isPrivate)
-    // document.getElementById('edit-category-form').reset()
   }
 
   return (
-    <section class='add-section'>
-      <div class='add-container'>
-        <div class='add-content'>
-          <div class='add-bookmark-section'>
-            <p class='title'>{`Edit ${categoryName}`}</p>
-            <form id='edit-category-form' class='add-bookmark-form'>
-              <div class='form-field'>
+    <section className='add-section'>
+      <div className='add-container'>
+        <div className='add-content'>
+          <div className='add-bookmark-section'>
+            <p className='title'>{`Edit ${categoryName}`}</p>
+            <form id='edit-category-form' className='add-bookmark-form'>
+              <div className='form-field'>
                 <label for='add-category-name'>Name</label>
                 <input
                   id='add-category-name'
@@ -76,8 +74,8 @@ const EditCategoryScreen = ({ history, match }) => {
                 />
               </div>
 
-              <div class='form-field'>
-                <div class='checkbox-container'>
+              <div className='form-field'>
+                <div className='checkbox-container'>
                   {isPrivate ? (
                     <input
                       type='checkbox'
@@ -101,32 +99,22 @@ const EditCategoryScreen = ({ history, match }) => {
                     />
                   )}
 
-                  {/* <input
-                    type='checkbox'
-                    id='add-category-privacy'
-                    value='private'
-                    checked
-                    onChange={(e) => {
-                      if (!isPrivate) setIsPrivate(true)
-                      else setIsPrivate(false)
-                    }}
-                  /> */}
                   <label for='add-category-privacy'>Private</label>
                 </div>
               </div>
-              <div class='form-field save-cancel'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Save</div>
-                </a>
+              <div className='form-field save-cancel'>
+                <Link to='.' onClick={submitHandler}>
+                  <div className='button'>Save</div>
+                </Link>
 
-                <a href='#' onClick={resetHandler}>
-                  <div class='button'>Cancel</div>
-                </a>
+                <Link to='/' onClick={resetHandler}>
+                  <div className='button'>Cancel</div>
+                </Link>
               </div>
 
-              <div class='form-field'>
+              <div className='form-field'>
                 <Link to={`/categories/${match.params.categoryID}`}>
-                  <div class='button last'>Go Back</div>
+                  <div className='button last'>Go Back</div>
                 </Link>
               </div>
             </form>

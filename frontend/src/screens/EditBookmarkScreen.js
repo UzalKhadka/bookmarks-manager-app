@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
-  getCategoriesList,
   getBookmarkDetails,
   updateBookmark,
   getCategoryDetails,
@@ -18,13 +17,12 @@ const EditBookmarkScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   const Bookmark = useSelector((state) => state.bookmarkDetails)
-  const { loading, error, bookmark } = Bookmark
+  const { bookmark } = Bookmark
 
   const bookmarkName = bookmark ? bookmark.name : 'a Bookmark'
 
   useEffect(() => {
     dispatch(
-      // getCategoriesList(userInfo._id),
       getBookmarkDetails(
         userInfo._id,
         match.params.categoryID,
@@ -66,18 +64,17 @@ const EditBookmarkScreen = ({ history, match }) => {
   const resetForm = () => {
     setName(bookmark.name)
     setLink(bookmark.link)
-    // document.getElementById('edit-bookmarks-form').reset()
   }
 
   return (
     // <!-- edit a bookmark section -->
-    <section class='add-section'>
-      <div class='add-container'>
-        <div class='add-content'>
-          <div class='add-bookmark-section'>
-            <p class='title'>{`Edit ${bookmarkName}`}</p>
-            <form id='edit-bookmarks-form' class='add-bookmark-form'>
-              <div class='form-field'>
+    <section className='add-section'>
+      <div className='add-container'>
+        <div className='add-content'>
+          <div className='add-bookmark-section'>
+            <p className='title'>{`Edit ${bookmarkName}`}</p>
+            <form id='edit-bookmarks-form' className='add-bookmark-form'>
+              <div className='form-field'>
                 <label for='add-bookmark-name'>Name</label>
                 <input
                   id='add-bookmark-name'
@@ -87,7 +84,7 @@ const EditBookmarkScreen = ({ history, match }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='add-bookmark-link'>Link</label>
                 <input
                   id='add-bookmark-link'
@@ -98,19 +95,19 @@ const EditBookmarkScreen = ({ history, match }) => {
                 />
               </div>
 
-              <div class='form-field save-cancel'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Save</div>
-                </a>
+              <div className='form-field save-cancel'>
+                <Link to='/' onClick={submitHandler}>
+                  <div className='button'>Save</div>
+                </Link>
 
-                <a href='#' onClick={resetHandler}>
-                  <div class='button'>Cancel</div>
-                </a>
+                <Link to='/' onClick={resetHandler}>
+                  <div className='button'>Cancel</div>
+                </Link>
               </div>
 
-              <div class='form-field'>
+              <div className='form-field'>
                 <Link to={`/categories/${match.params.categoryID}`}>
-                  <div class='button last'>Go Back</div>
+                  <div className='button last'>Go Back</div>
                 </Link>
               </div>
             </form>

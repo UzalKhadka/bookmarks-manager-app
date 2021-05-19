@@ -1,5 +1,4 @@
-// import axios from 'axios'
-import React, { useState } from 'react'
+import React from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -9,7 +8,7 @@ const CategoriesScreen = () => {
   const dispatch = useDispatch()
 
   const CategoriesList = useSelector((state) => state.categoryList)
-  const { loading, error, categories } = CategoriesList
+  const { categories } = CategoriesList
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -21,22 +20,22 @@ const CategoriesScreen = () => {
   return (
     // <!-- my categories section -->
     <section id='my-categories'>
-      <div class='my-categories-container'>
-        <div class='my-categories-content'>
-          <div class='my-categories-title'>
-            <p class='title'>My Categories</p>
+      <div className='my-categories-container'>
+        <div className='my-categories-content'>
+          <div className='my-categories-title'>
+            <p className='title'>My Categories</p>
           </div>
-          <div class='my-categories'>
-            <div class='category-card-container'>
-              <div class='category-card'>
+          <div className='my-categories'>
+            <div className='category-card-container'>
+              <div className='category-card'>
                 <Link to='/add-category'>
-                  <div class='category-title'>
-                    <div class='plus-container'>
-                      <div class='plus-icon'></div>
+                  <div className='category-title'>
+                    <div className='plus-container'>
+                      <div className='plus-icon'></div>
                     </div>
                   </div>
                 </Link>
-                <div class='is-private'>Create</div>
+                <div className='is-private'>Create</div>
               </div>
             </div>
 
@@ -44,13 +43,13 @@ const CategoriesScreen = () => {
               <div
                 key={category._id}
                 id='category-card'
-                class='category-card-container'
+                className='category-card-container'
               >
-                <div class='category-card'>
+                <div className='category-card'>
                   <Link to={`/categories/${category._id}`}>
-                    <div class='category-title'>{category.name}</div>
+                    <div className='category-title'>{category.name}</div>
                   </Link>
-                  <div class='is-private'>
+                  <div className='is-private'>
                     {category.isPrivate === true ? `Private` : `Public`}
                   </div>
                 </div>
@@ -58,9 +57,9 @@ const CategoriesScreen = () => {
             ))}
           </div>
 
-          <div class='go-back-button'>
+          <div className='go-back-button'>
             <Link to='/'>
-              <div class='button last'>Go Back</div>
+              <div className='button last'>Go Back</div>
             </Link>
           </div>
         </div>

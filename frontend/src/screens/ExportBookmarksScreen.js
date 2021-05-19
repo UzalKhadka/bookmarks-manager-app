@@ -1,26 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { createCategoryWithBookmarks } from '../actions/userActions'
 
-const ImportBookmarksScreen = () => {
+const ExportBookmarksScreen = () => {
   const [name, setName] = useState('')
   const [isPrivate, setIsPrivate] = useState(false)
   let [file, setFile] = useState(null)
   let [fileURL, setFileURL] = useState(null)
 
-  const dispatch = useDispatch()
-
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
-
   const importHandler = async (e) => {
     e.preventDefault()
-    console.log(name, isPrivate, file, fileURL)
-
-    if (name && isPrivate && file) {
-      dispatch(createCategoryWithBookmarks(userInfo._id, name, isPrivate, file))
-    }
+    console.log(name, fileURL)
   }
 
   const dragOverHandler = (e) => {
@@ -41,7 +30,6 @@ const ImportBookmarksScreen = () => {
   const dropHandler = (e) => {
     e.preventDefault()
     setFile(e.dataTransfer.files[0])
-
     showFile()
   }
 
@@ -52,19 +40,20 @@ const ImportBookmarksScreen = () => {
 
   const fileBrowserHandler = function () {
     setFile(this.files[0])
+    showFile()
     document.getElementById('dragArea').classList.add('active')
   }
 
   function showFile() {
     if (file) {
       let fileType = file.type
+
       let validExtensions = ['text/html']
 
       if (validExtensions.includes(fileType)) {
         let fileReader = new FileReader()
         fileReader.onload = () => {
           setFileURL(fileReader.result)
-          console.log(fileReader.result)
           document.getElementById(
             'dragAreaHeader'
           ).textContent = `"${file.name}" File Ready To Upload`
@@ -83,14 +72,13 @@ const ImportBookmarksScreen = () => {
       document.getElementById('dragArea').classList.remove('active')
     }
   }
-
   return (
     // <!-- my categories section -->
     <section id='my-bookmarks-and-categories'>
       <div className='my-categories-container'>
         <div className='my-categories-content'>
           <div className='my-categories-title'>
-            <p className='title'>Import Bookmarks</p>
+            <p className='title'>Export Bookmarks</p>
           </div>
 
           <div className='create-category-section'>
@@ -115,7 +103,7 @@ const ImportBookmarksScreen = () => {
                 className='browse-files'
                 onClick={browseFilesHandler}
               >
-                Browse Files
+                Select Directory
               </button>
               <input
                 id='fileBrowser'
@@ -156,7 +144,7 @@ const ImportBookmarksScreen = () => {
 
                 <div className='form-field'>
                   <Link to='/' onClick={importHandler}>
-                    <div className='button'>Import</div>
+                    <div className='button'>Export</div>
                   </Link>
                 </div>
               </form>
@@ -168,4 +156,4 @@ const ImportBookmarksScreen = () => {
   )
 }
 
-export default ImportBookmarksScreen
+export default ExportBookmarksScreen

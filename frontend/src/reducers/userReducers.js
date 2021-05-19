@@ -26,6 +26,9 @@ import {
   CATEGORY_UPDATE_FAIL,
   CATEGORY_UPDATE_REQUEST,
   CATEGORY_UPDATE_SUCCESS,
+  CATEGORY_WITH_BOOKMARKS_CREATE_FAIL,
+  CATEGORY_WITH_BOOKMARKS_CREATE_REQUEST,
+  CATEGORY_WITH_BOOKMARKS_CREATE_SUCCESS,
   USER_CATEGORY_LIST_FAIL,
   USER_CATEGORY_LIST_REQUEST,
   USER_CATEGORY_LIST_SUCCESS,
@@ -125,6 +128,19 @@ export const addCategoryReducer = (state = {}, action) => {
     case CATEGORY_CREATE_SUCCESS:
       return { loading: false, success: true, category: action.payload }
     case CATEGORY_CREATE_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const addCategoryWithBookmarksReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CATEGORY_WITH_BOOKMARKS_CREATE_REQUEST:
+      return { loading: true }
+    case CATEGORY_WITH_BOOKMARKS_CREATE_SUCCESS:
+      return { loading: false, success: true, category: action.payload }
+    case CATEGORY_WITH_BOOKMARKS_CREATE_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

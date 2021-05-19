@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   addBookmarkReducer,
   addCategoryReducer,
+  addCategoryWithBookmarksReducer,
   bookmarkDetailsReducer,
   categoryDetailsReducer,
   categoryListReducer,
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   categoryDetails: categoryDetailsReducer,
   bookmarkDetails: bookmarkDetailsReducer,
   addCategory: addCategoryReducer,
+  addCategoryWithBookmarks: addCategoryWithBookmarksReducer,
   addBookmark: addBookmarkReducer,
   deleteBookmark: deleteBookmarkReducer,
   deleteCategory: deleteCategoryReducer,

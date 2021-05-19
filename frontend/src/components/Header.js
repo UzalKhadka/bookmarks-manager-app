@@ -16,48 +16,50 @@ const Header = () => {
   return (
     // <!-- header -->
     <header>
-      <div class='header-container'>
-        <div class='header-content'>
-          <div class='logo'>
+      <div className='header-container'>
+        <div className='header-content'>
+          <div className='logo'>
             <Link to='/'>
-              <span class='golden-color rgb-switcher'>Bookmark Manager</span>
+              <span className='golden-color rgb-switcher'>
+                Bookmark Manager
+              </span>
             </Link>
           </div>
-          <ul class='menu'>
+          <ul className='menu'>
             <li>
-              <Link to='/' class='menu-button'>
+              <Link to='/' className='menu-button'>
                 Home
               </Link>
             </li>
             <li>
-              <Link to='/bookmarks' class='menu-button'>
+              <Link to='/bookmarks' className='menu-button'>
                 Bookmarks
               </Link>
             </li>
             <li>
-              <Link to='/categories' class='menu-button'>
+              <Link to='/categories' className='menu-button'>
                 Categories
               </Link>
             </li>
             <li>
-              <Link to='/import-bookmarks' class='menu-button'>
+              <Link to='/import-bookmarks' className='menu-button'>
                 Import
               </Link>
             </li>
             <li>
-              <Link to='/export-bookmarks' class='menu-button'>
+              <Link to='/export-bookmarks' className='menu-button'>
                 Export
               </Link>
             </li>
             {userInfo ? (
               <li onClick={logoutHandler}>
-                <Link to='/' class='menu-button'>
+                <Link to='/' className='menu-button'>
                   Log Out
                 </Link>
               </li>
             ) : (
               <li>
-                <Link to='/login' class='menu-button'>
+                <Link to='/login' className='menu-button'>
                   Login/Register
                 </Link>
               </li>

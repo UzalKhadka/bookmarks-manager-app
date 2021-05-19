@@ -9,7 +9,7 @@ const LoginScreen = ({ history, location }) => {
 
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error, userInfo } = userLogin
+  const { userInfo } = userLogin
 
   const redirect = location.search
     ? location.search.split('=')[1]
@@ -23,19 +23,18 @@ const LoginScreen = ({ history, location }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    //dispatch login
     dispatch(login(username, password))
   }
 
   return (
     // <!-- signup section -->
-    <section class='login-signup-section'>
-      <div class='login-signup-container'>
-        <div class='login-signup-content'>
-          <div class='main-section'>
-            <p class='title'>Log In</p>
-            <form class='login-signup-form'>
-              <div class='form-field'>
+    <section className='login-signup-section'>
+      <div className='login-signup-container'>
+        <div className='login-signup-content'>
+          <div className='main-section'>
+            <p className='title'>Log In</p>
+            <form className='login-signup-form'>
+              <div className='form-field'>
                 <label for='signup-username'>Username</label>
                 <input
                   id='signup-username'
@@ -44,7 +43,7 @@ const LoginScreen = ({ history, location }) => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='signup-password'>Password</label>
                 <input
                   id='signup-password'
@@ -54,23 +53,23 @@ const LoginScreen = ({ history, location }) => {
                 />
               </div>
 
-              <div class='form-field'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Log In</div>
-                </a>
-              </div>
-
-              <div class='form-field'>
-                <p class='prompt-message'>Not registered yet?</p>
-                <Link to='/signup'>
-                  <div class='button last second-last'>Sign Up</div>
+              <div className='form-field'>
+                <Link to='/' onClick={submitHandler}>
+                  <div className='button'>Log In</div>
                 </Link>
               </div>
 
-              <div class='form-field'>
-                <a href='#'>
-                  <div class='button last'>Go Back</div>
-                </a>
+              <div className='form-field'>
+                <p className='prompt-message'>Not registered yet?</p>
+                <Link to='/signup'>
+                  <div className='button last second-last'>Sign Up</div>
+                </Link>
+              </div>
+
+              <div className='form-field'>
+                <Link to='/'>
+                  <div className='button last'>Go Back</div>
+                </Link>
               </div>
             </form>
           </div>

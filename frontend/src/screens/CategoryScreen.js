@@ -1,5 +1,4 @@
-// import axios from 'axios'
-import React, { useState } from 'react'
+import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -14,7 +13,7 @@ const CategoryScreen = ({ history, match }) => {
   const dispatch = useDispatch()
 
   const categoryDetails = useSelector((state) => state.categoryDetails)
-  const { loading, error, category } = categoryDetails
+  const { category } = categoryDetails
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -24,7 +23,6 @@ const CategoryScreen = ({ history, match }) => {
   }, [dispatch, match.params.categoryID, userInfo._id])
 
   const copyToClipboard = (link) => {
-    // console.log(link)
     navigator.clipboard.writeText(link)
   }
 
@@ -67,54 +65,54 @@ const CategoryScreen = ({ history, match }) => {
   return (
     // <!-- my categories section -->
     <section id='my-bookmarks-and-categories'>
-      <div class='my-categories-container'>
-        <div class='my-categories-content'>
-          <div class='my-categories-title'>
-            <p class='title'>{category.name}</p>
+      <div className='my-categories-container'>
+        <div className='my-categories-content'>
+          <div className='my-categories-title'>
+            <p className='title'>{category.name}</p>
           </div>
-          <ul class='my-bookmarks'>
-            <li class='my-bookmarks-table'>
-              <div class='table-title'>
-                <div class='table-title-name'>
-                  <p class='current-category-name'>{category.name}</p>
-                  <p class='current-category-privacy-type'>
+          <ul className='my-bookmarks'>
+            <li className='my-bookmarks-table'>
+              <div className='table-title'>
+                <div className='table-title-name'>
+                  <p className='current-category-name'>{category.name}</p>
+                  <p className='current-category-privacy-type'>
                     {category.isPrivate === true ? `(Private)` : `(Public)`}
                   </p>
                 </div>
-                <div class='table-title-icons'>
+                <div className='table-title-icons'>
                   <span
                     id='editCategory'
                     onClick={() => editCategory(category._id)}
                   >
-                    <i class='far fa-edit'></i>
+                    <i className='far fa-edit'></i>
                   </span>
                   <span
                     id='deleteCategory'
                     onClick={() => removeCategory(category._id)}
                   >
-                    <i class='far fa-trash-alt'></i>
+                    <i className='far fa-trash-alt'></i>
                   </span>
                 </div>
               </div>
-              <div class='table-body'>
-                <table class='bookmark-table'>
+              <div className='table-body'>
+                <table className='bookmark-table'>
                   <thead>
                     <tr>
-                      <th class='current-bookmark-sn current-bookmark-index'>
+                      <th className='current-bookmark-sn current-bookmark-index'>
                         S.N
                       </th>
-                      <th class='current-bookmark-name'>Name</th>
-                      <th class='current-bookmark-link'>Link</th>
-                      <th class='current-bookmark-copy current-bookmark-option'>
+                      <th className='current-bookmark-name'>Name</th>
+                      <th className='current-bookmark-link'>Link</th>
+                      <th className='current-bookmark-copy current-bookmark-option'>
                         Copy
                       </th>
-                      <th class='current-bookmark-goto current-bookmark-option'>
+                      <th className='current-bookmark-goto current-bookmark-option'>
                         Go To
                       </th>
-                      <th class='current-bookmark-edit current-bookmark-option'>
+                      <th className='current-bookmark-edit current-bookmark-option'>
                         Edit
                       </th>
-                      <th class='current-bookmark-delete current-bookmark-option'>
+                      <th className='current-bookmark-delete current-bookmark-option'>
                         Delete
                       </th>
                     </tr>
@@ -124,43 +122,47 @@ const CategoryScreen = ({ history, match }) => {
                     {category.bookmarks &&
                       category.bookmarks.map((bookmark, index) => (
                         <tr key={index}>
-                          <td class='current-bookmark-sn current-bookmark-index'>
+                          <td className='current-bookmark-sn current-bookmark-index'>
                             {index + 1}
                           </td>
-                          <td class='current-bookmark-name'>{bookmark.name}</td>
-                          <td class='current-bookmark-link'>{bookmark.link}</td>
+                          <td className='current-bookmark-name'>
+                            {bookmark.name}
+                          </td>
+                          <td className='current-bookmark-link'>
+                            {bookmark.link}
+                          </td>
                           <td
                             id='currentBookmarkCopy'
-                            class='current-bookmark-option'
+                            className='current-bookmark-option'
                             onClick={() => copyToClipboard(bookmark.link)}
                           >
-                            <i class='far fa-copy'></i>
+                            <i className='far fa-copy'></i>
                           </td>
 
                           <td
                             id='currentBookmarkGoTo'
-                            class='current-bookmark-option'
+                            className='current-bookmark-option'
                             onClick={() => openInNewTab(bookmark.link)}
                           >
-                            <i class='fas fa-external-link-alt'></i>
+                            <i className='fas fa-external-link-alt'></i>
                           </td>
                           <td
                             id='currentBookmarkEdit'
-                            class='current-bookmark-option'
+                            className='current-bookmark-option'
                             onClick={() =>
                               editBookmark(category._id, bookmark._id)
                             }
                           >
-                            <i class='far fa-edit'></i>
+                            <i className='far fa-edit'></i>
                           </td>
                           <td
                             id='currentBookmarkDelete'
-                            class='current-bookmark-option'
+                            className='current-bookmark-option'
                             onClick={() =>
                               removeBookmark(category._id, bookmark._id)
                             }
                           >
-                            <i class='far fa-trash-alt'></i>
+                            <i className='far fa-trash-alt'></i>
                           </td>
                         </tr>
                       ))}
@@ -168,16 +170,16 @@ const CategoryScreen = ({ history, match }) => {
                 </table>
               </div>
             </li>
-            <div class='add-bookmark-button'>
+            <div className='add-bookmark-button'>
               <Link to={`/categories/${category._id}/add-bookmark/`}>
-                <div class='button last'>Add A Bookmark</div>
+                <div className='button last'>Add A Bookmark</div>
               </Link>
             </div>
           </ul>
 
-          <div class='go-back-button'>
+          <div className='go-back-button'>
             <Link to='/categories'>
-              <div class='button last'>Go Back</div>
+              <div className='button last'>Go Back</div>
             </Link>
           </div>
         </div>

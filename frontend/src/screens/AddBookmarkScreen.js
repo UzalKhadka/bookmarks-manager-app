@@ -18,7 +18,7 @@ const AddBookmarkScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   const CategoriesList = useSelector((state) => state.categoryList)
-  const { loading, error, categories } = CategoriesList
+  const { categories } = CategoriesList
 
   useEffect(() => {
     dispatch(getCategoriesList(userInfo._id))
@@ -48,13 +48,13 @@ const AddBookmarkScreen = ({ history, match }) => {
 
   return (
     // <!-- add a bookmark section -->
-    <section class='add-section'>
-      <div class='add-container'>
-        <div class='add-content'>
-          <div class='add-bookmark-section'>
-            <p class='title'>Add a Bookmark</p>
-            <form id='add-bookmarks-form' class='add-bookmark-form'>
-              <div class='form-field'>
+    <section className='add-section'>
+      <div className='add-container'>
+        <div className='add-content'>
+          <div className='add-bookmark-section'>
+            <p className='title'>Add a Bookmark</p>
+            <form id='add-bookmarks-form' className='add-bookmark-form'>
+              <div className='form-field'>
                 <label for='add-bookmark-name'>Name</label>
                 <input
                   id='add-bookmark-name'
@@ -63,7 +63,7 @@ const AddBookmarkScreen = ({ history, match }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='add-bookmark-link'>Link</label>
                 <input
                   id='add-bookmark-link'
@@ -72,7 +72,7 @@ const AddBookmarkScreen = ({ history, match }) => {
                   onChange={(e) => setLink(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='add-bookmark-category'>Category</label>
                 <select
                   id='add-bookmark-category'
@@ -85,31 +85,31 @@ const AddBookmarkScreen = ({ history, match }) => {
                   </option>
 
                   {categories.map((category, index) => (
-                    <option key={index} class='option' value={category._id}>
+                    <option key={index} className='option' value={category._id}>
                       {category.name}
                     </option>
                   ))}
                 </select>
               </div>
-              <div class='form-field save-cancel'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Save</div>
-                </a>
+              <div className='form-field save-cancel'>
+                <Link to='/' onClick={submitHandler}>
+                  <div className='button'>Save</div>
+                </Link>
 
-                <a href='#' onClick={resetHandler}>
-                  <div class='button'>Cancel</div>
-                </a>
-              </div>
-
-              <div class='form-field'>
-                <Link to='./add-category'>
-                  <div class='button last second-last'>Add a Category</div>
+                <Link to='/' onClick={resetHandler}>
+                  <div className='button'>Cancel</div>
                 </Link>
               </div>
 
-              <div class='form-field'>
+              <div className='form-field'>
+                <Link to='./add-category'>
+                  <div className='button last second-last'>Add a Category</div>
+                </Link>
+              </div>
+
+              <div className='form-field'>
                 <Link to='/'>
-                  <div class='button last'>Go Back</div>
+                  <div className='button last'>Go Back</div>
                 </Link>
               </div>
             </form>

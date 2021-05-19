@@ -10,7 +10,9 @@ import CategoriesScreen from './screens/CategoriesScreen'
 import CategoryScreen from './screens/CategoryScreen'
 import EditBookmarkScreen from './screens/EditBookmarkScreen'
 import EditCategoryScreen from './screens/EditCategoryScreen'
+import ExportBookmarksScreen from './screens/ExportBookmarksScreen'
 import HomeScreen from './screens/HomeScreen'
+import ImportBookmarksScreen from './screens/ImportBookmarks'
 import LoginScreen from './screens/LoginScreen'
 import OtherUserScreen from './screens/OtherUserScreen'
 import SignupScreen from './screens/SignupScreen'
@@ -26,6 +28,16 @@ function App() {
         <Route exact path='/signup' component={SignupScreen} />
         <Route exact path='/bookmarks' component={BookmarksScreen} />
         <Route exact path='/categories' component={CategoriesScreen} />
+        <Route
+          exact
+          path='/import-bookmarks'
+          component={ImportBookmarksScreen}
+        />
+        <Route
+          exact
+          path='/export-bookmarks'
+          component={ExportBookmarksScreen}
+        />
         <Route exact path='/add-bookmark' component={AddBookmarkScreen} />
         <Route exact path='/add-category' component={AddCategoryScreen} />
         <Route

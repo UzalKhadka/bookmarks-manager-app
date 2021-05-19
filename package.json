@@ -7,18 +7,20 @@
   "scripts": {
     "start": "node backend/server",
     "backend-server": "nodemon --watch backend backend/server",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "frontend-server": "npm start --prefix frontend",
+    "app": "concurrently \"npm run frontend-server\" \"npm run backend-server\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "author": "Sahaja Phuyal, Ganesh Acharya, Bisistha, Pranav Shrestha, Ujjal Khadka",
+  "author": "Sahaja Phuyal, Ganesh Acharya, Bisistha, PranaB Shrestha, Ujjal Khadka",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "express-fileupload": "^1.2.1",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.3"
   },

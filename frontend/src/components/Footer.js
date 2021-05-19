@@ -3,13 +3,13 @@ import React from 'react'
 const Footer = () => {
   return (
     // <!-- footer section -->
-    <footer class='footer-section'>
-      <div class='footer-container'>
-        <div class='footer-content'>
-          <div class='info'>
-            <div class='about-us'>
-              <p class='title'>About the Project</p>
-              <p class='about-info'>
+    <footer className='footer-section'>
+      <div className='footer-container'>
+        <div className='footer-content'>
+          <div className='info'>
+            <div className='about-us'>
+              <p className='title'>About the Project</p>
+              <p className='about-info'>
                 Bookmarks Manager is a Web Application created using the
                 currently trending MERN Stack where frontend development is done
                 using React (R), database using MongoDB (M), and backend using
@@ -19,8 +19,8 @@ const Footer = () => {
                 bookmarks to and fro.
               </p>
             </div>
-            <div class='members'>
-              <p class='title'>Project Members</p>
+            <div className='members'>
+              <p className='title'>Project Members</p>
               <ul>
                 <li>
                   <strong>Project Manager</strong>
@@ -44,9 +44,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div class='line'></div>
+          <div className='line'></div>
 
-          <div class='copyright-bar'>
+          <div className='copyright-bar'>
             <p>
               <span>Bookmark Manager App</span> &copy; 2021 - All Rights
               Reserved

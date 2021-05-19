@@ -12,7 +12,7 @@ const SignupScreen = ({ location, history }) => {
 
   const dispatch = useDispatch()
   const userSignup = useSelector((state) => state.userSignup)
-  const { loading, error, userInfo } = userSignup
+  const { userInfo } = userSignup
 
   const redirect = location.search ? location.search.split('=')[1] : '/login'
 
@@ -24,9 +24,9 @@ const SignupScreen = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    //dispatch register
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
+      console.log(message)
     } else {
       dispatch(signup(username, name, password))
     }
@@ -34,13 +34,13 @@ const SignupScreen = ({ location, history }) => {
 
   return (
     // <!-- signup section -->
-    <section class='login-signup-section'>
-      <div class='login-signup-container'>
-        <div class='login-signup-content'>
-          <div class='main-section'>
-            <p class='title'>Sign Up</p>
-            <form class='login-signup-form'>
-              <div class='form-field'>
+    <section className='login-signup-section'>
+      <div className='login-signup-container'>
+        <div className='login-signup-content'>
+          <div className='main-section'>
+            <p className='title'>Sign Up</p>
+            <form className='login-signup-form'>
+              <div className='form-field'>
                 <label for='signup-name'>Name</label>
                 <input
                   id='signup-name'
@@ -49,7 +49,7 @@ const SignupScreen = ({ location, history }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='signup-username'>Username</label>
                 <input
                   id='signup-username'
@@ -58,7 +58,7 @@ const SignupScreen = ({ location, history }) => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='signup-password'>Password</label>
                 <input
                   id='signup-password'
@@ -67,7 +67,7 @@ const SignupScreen = ({ location, history }) => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div class='form-field'>
+              <div className='form-field'>
                 <label for='signup-confirm-password'>Confirm Password</label>
                 <input
                   id='signup-confirm-password'
@@ -77,23 +77,23 @@ const SignupScreen = ({ location, history }) => {
                 />
               </div>
 
-              <div class='form-field'>
-                <a href='#' onClick={submitHandler}>
-                  <div class='button'>Sign Up</div>
-                </a>
-              </div>
-
-              <div class='form-field'>
-                <p class='prompt-message'>Already registered?</p>
-                <Link to='/login'>
-                  <div class='button last second-last'>Log In</div>
+              <div className='form-field'>
+                <Link to='/' onClick={submitHandler}>
+                  <div className='button'>Sign Up</div>
                 </Link>
               </div>
 
-              <div class='form-field'>
-                <a href='#'>
-                  <div class='button last'>Go Back</div>
-                </a>
+              <div className='form-field'>
+                <p className='prompt-message'>Already registered?</p>
+                <Link to='/login'>
+                  <div className='button last second-last'>Log In</div>
+                </Link>
+              </div>
+
+              <div className='form-field'>
+                <Link to='/'>
+                  <div className='button last'>Go Back</div>
+                </Link>
               </div>
             </form>
           </div>

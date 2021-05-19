@@ -8,47 +8,49 @@ const HomeScreen = () => {
 
   return (
     // <!-- hero  -->
-    <section class='hero-section'>
-      <div class='hero-container'>
-        <div class='hero-content'>
-          <div class='welcome-message'>
+    <section className='hero-section'>
+      <div className='hero-container'>
+        <div className='hero-content'>
+          <div className='welcome-message'>
             Welcome{' '}
-            <span class='extra'>{userInfo ? userInfo.name : 'Guest User'}</span>
+            <span className='extra'>
+              {userInfo ? userInfo.name : 'Guest User'}
+            </span>
             {userInfo ? (
               <></>
             ) : (
-              <div class='login-signup-prompt'>
+              <div className='login-signup-prompt'>
                 <Link to='/login'>
-                  <div class='button'>Log In</div>
+                  <div className='button'>Log In</div>
                 </Link>
                 <Link to='/signup'>
-                  <div class='button'>Sign Up</div>
+                  <div className='button'>Sign Up</div>
                 </Link>
               </div>
             )}
           </div>
-          <div class='my-categories-button'>
+          <div className='my-categories-button'>
             <Link to='/categories'>
-              <div class='button'>My Categories</div>
+              <div className='button'>My Categories</div>
             </Link>
             <Link to='/bookmarks'>
-              <div class='button'>My Bookmarks</div>
+              <div className='button'>My Bookmarks</div>
             </Link>
           </div>
-          <div class='add-bookmarks-and-categories'>
+          <div className='add-bookmarks-and-categories'>
             <Link to='/add-bookmark'>
-              <div class='button'>Add a Bookmark</div>
+              <div className='button'>Add a Bookmark</div>
             </Link>
             <Link to='/add-category'>
-              <div class='button'>Add a Category</div>
+              <div className='button'>Add a Category</div>
             </Link>
           </div>
-          <div class='import-export'>
-            <Link to='#'>
-              <div class='button'>Import Bookmarks</div>
+          <div className='import-export'>
+            <Link to='/import-bookmarks'>
+              <div className='button'>Import Bookmarks</div>
             </Link>
-            <Link to='#'>
-              <div class='button'>Export Bookmarks</div>
+            <Link to='/import-bookmarks'>
+              <div className='button'>Export Bookmarks</div>
             </Link>
           </div>
         </div>
